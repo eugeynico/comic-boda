@@ -1,0 +1,86 @@
+body {
+    margin: 0;
+    background: linear-gradient(135deg, #f8f1e7, #e8d8c3);
+    font-family: Arial, sans-serif;
+    overflow: hidden;
+}
+
+/* Fondo flotante */
+.fondo {
+    position: fixed;
+    width: 100%;
+    height: 100%;
+    pointer-events: none;
+    overflow: hidden;
+    z-index: 1;
+}
+
+.float {
+    position: absolute;
+    font-size: 28px;
+    opacity: 0.18;
+    animation: caer linear infinite;
+}
+
+@keyframes caer {
+    0% {
+        transform: translateY(-10vh);
+    }
+    100% {
+        transform: translateY(110vh);
+    }
+}
+
+#inicio {
+    position: fixed;
+    width: 100%;
+    height: 100%;
+    background: linear-gradient(135deg, #f8f1e7, #e8d8c3);
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    z-index: 999;
+}
+
+#botonInicio {
+    padding: 20px 35px;
+    font-size: 24px;
+    border: none;
+    border-radius: 14px;
+    background: white;
+    cursor: pointer;
+    box-shadow: 0 0 20px rgba(0,0,0,0.15);
+    animation: pulse 2s infinite;
+}
+
+@keyframes pulse {
+    0%,100% {transform: scale(1);}
+    50% {transform: scale(1.05);}
+}
+
+#book {
+    width: 90vw;
+    height: 90vh;
+    margin: auto;
+    display: none;
+    position: relative;
+    z-index: 5;
+}
+
+.page img {
+    width: 100%;
+    height: 100%;
+    object-fit: contain;
+}
+
+#musicBtn {
+    position: fixed;
+    top: 15px;
+    right: 15px;
+    z-index: 9999;
+    padding: 12px 18px;
+    border: none;
+    border-radius: 12px;
+    background: white;
+    cursor: pointer;
+}
