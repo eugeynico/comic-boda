@@ -105,7 +105,7 @@ document.getElementById("botonInicio").addEventListener("click", function () {
             minHeight: 420,
             maxHeight: 1350,
             showCover: true,
-            mobileScrollSupport: true,
+            mobileScrollSupport: false,
             flippingTime: 1500,
             usePortrait: true,
             maxShadowOpacity: 0.18
