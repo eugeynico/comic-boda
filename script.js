@@ -37,9 +37,11 @@ function crearFondo() {
 
         item.classList.add("float");
 
-        item.innerHTML = iconos[Math.floor(Math.random() * iconos.length)];
+        item.innerHTML =
+            iconos[Math.floor(Math.random() * iconos.length)];
 
-        item.style.left = Math.random() * 100 + "vw";
+        item.style.left =
+            Math.random() * 100 + "vw";
 
         item.style.animationDuration =
             (4 + Math.random() * 5) + "s";
@@ -54,98 +56,6 @@ function crearFondo() {
         }, 9000);
 
     }, 600);
-}
-
-/* =========================
-   CONFETI FINAL
-========================= */
-
-function lanzarConfeti() {
-
-    for (let i = 0; i < 45; i++) {
-
-        const c = document.createElement("div");
-
-        c.innerHTML =
-            ["🎉", "✨", "💖"][
-                Math.floor(Math.random() * 3)
-            ];
-
-        c.style.position = "fixed";
-        c.style.left = "50%";
-        c.style.top = "50%";
-        c.style.fontSize =
-            (18 + Math.random() * 18) + "px";
-
-        c.style.zIndex = "9999";
-
-        document.body.appendChild(c);
-
-        let x = (Math.random() - 0.5) * 700;
-        let y = (Math.random() - 0.5) * 700;
-
-        c.animate(
-            [
-                {
-                    transform: "translate(0,0)",
-                    opacity: 1
-                },
-                {
-                    transform:
-                        `translate(${x}px, ${y}px)`,
-                    opacity: 0
-                }
-            ],
-            {
-                duration: 1800,
-                easing: "ease-out"
-            }
-        );
-
-        setTimeout(() => {
-            c.remove();
-        }, 1800);
-    }
-}
-
-/* =========================
-   MENSAJE FINAL
-========================= */
-
-function mostrarMensajeFinal() {
-
-    const mensaje = document.createElement("div");
-
-    mensaje.innerHTML =
-        "💍 Y esta historia recién comienza... 💍";
-
-    mensaje.style.position = "fixed";
-    mensaje.style.top = "50%";
-    mensaje.style.left = "50%";
-    mensaje.style.transform =
-        "translate(-50%, -50%)";
-
-    mensaje.style.background =
-        "rgba(255,255,255,0.92)";
-
-    mensaje.style.padding = "25px 40px";
-
-    mensaje.style.borderRadius = "20px";
-
-    mensaje.style.fontSize = "30px";
-
-    mensaje.style.textAlign = "center";
-
-    mensaje.style.zIndex = "10000";
-
-    mensaje.style.boxShadow =
-        "0 0 25px rgba(0,0,0,0.2)";
-
-    document.body.appendChild(mensaje);
-
-    setTimeout(() => {
-        mensaje.remove();
-    }, 5000);
 }
 
 /* =========================
@@ -200,19 +110,5 @@ document
 
         this.innerHTML =
             "🔇 Música OFF";
-    }
-});
-
-/* =========================
-   DETECTAR ÚLTIMA PÁGINA
-========================= */
-
-pageFlip.on("flip", (e) => {
-
-    if (e.data === 10) {
-
-        lanzarConfeti();
-
-        mostrarMensajeFinal();
     }
 });
