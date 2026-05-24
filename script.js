@@ -59,6 +59,58 @@ function crearFondo() {
 }
 
 /* =========================
+   CONFETI FINAL
+========================= */
+
+function lanzarConfeti() {
+
+    for (let i = 0; i < 40; i++) {
+
+        const c = document.createElement("div");
+
+        c.innerHTML =
+            ["🎉", "✨", "💖"][
+                Math.floor(Math.random() * 3)
+            ];
+
+        c.style.position = "fixed";
+        c.style.left = "50%";
+        c.style.top = "50%";
+        c.style.fontSize =
+            (18 + Math.random() * 18) + "px";
+
+        c.style.zIndex = "9999";
+
+        document.body.appendChild(c);
+
+        let x = (Math.random() - 0.5) * 700;
+        let y = (Math.random() - 0.5) * 700;
+
+        c.animate(
+            [
+                {
+                    transform: "translate(0,0)",
+                    opacity: 1
+                },
+                {
+                    transform:
+                        `translate(${x}px, ${y}px)`,
+                    opacity: 0
+                }
+            ],
+            {
+                duration: 1800,
+                easing: "ease-out"
+            }
+        );
+
+        setTimeout(() => {
+            c.remove();
+        }, 1800);
+    }
+}
+
+/* =========================
    BOTÓN INICIO
 ========================= */
 
@@ -110,5 +162,32 @@ document
 
         this.innerHTML =
             "🔇 Música OFF";
+    }
+});
+
+/* =========================
+   CONFETI EN ÚLTIMA PÁGINA
+========================= */
+
+let confetiLanzado = false;
+
+pageFlip.on("flip", (e) => {
+
+    const ultimaPagina =
+        pageFlip.getPageCount() - 1;
+
+    if (
+        e.data === ultimaPagina &&
+        !confetiLanzado
+    ) {
+
+        lanzarConfeti();
+
+        confetiLanzado = true;
+    }
+
+    if (e.data !== ultimaPagina) {
+
+        confetiLanzado = false;
     }
 });
